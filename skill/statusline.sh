@@ -4,7 +4,7 @@
 input=$(cat)
 [ -n "$TOKEN_BAR_DEBUG" ] && printf '%s' "$input" > "$HOME/.claude/skills/token-bar/last-input.json"
 
-WIDTH=${TOKEN_BAR_WIDTH:-20}
+WIDTH=${TOKEN_BAR_WIDTH:-15}
 
 bar() { # $1 = pourcentage utilisé (0-100), $2 = libellé, $3 = suffixe
   local pct=${1%.*}; [ -z "$pct" ] && pct=0
@@ -37,16 +37,16 @@ used=$(jq -r '.context_window.current_usage
 pct=$(jq -r '.context_window.used_percentage // empty' <<<"$input")
 [ -z "$pct" ] && pct=$(( size > 0 ? used * 100 / size : 0 ))
 left=$(( size - used )); (( left < 0 )) && left=0
-out=$(bar "$pct" "ctx" " $(human "$used")/$(human "$size") (reste $(human "$left"))")
+out=$(bar "$pct" "Contexte" " $(human "$used")/$(human "$size") · $(human "$left") libres")
 
 # --- Limites d'abonnement (si Claude Code les fournit) -------------------
-for win in five_hour:5h seven_day:7j; do
+for win in "five_hour:Session 5h" "seven_day:Semaine"; do
   key=${win%%:*}; label=${win##*:}
   p=$(jq -r ".rate_limits.${key}.used_percentage // empty" <<<"$input")
   [ -z "$p" ] && continue
   r=$(jq -r ".rate_limits.${key}.resets_at // empty" <<<"$input")
-  suffix=""; [ -n "$r" ] && suffix=" ↻$(until_reset "$r")"
-  out+="  │  $(bar "$p" "$label" "$suffix")"
+  suffix=""; [ -n "$r" ] && suffix=" · reset $(until_reset "$r")"
+  out+=" │ $(bar "$p" "$label" "$suffix")"
 done
 
 printf '%b\n' "$out"

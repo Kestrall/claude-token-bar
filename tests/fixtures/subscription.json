@@ -1,0 +1,1 @@
+{"context_window":{"context_window_size":200000,"used_percentage":64,"current_usage":{"input_tokens":5000,"cache_creation_input_tokens":3000,"cache_read_input_tokens":120000}},"rate_limits":{"five_hour":{"used_percentage":85.4,"resets_at":RESET},"seven_day":{"used_percentage":97}}}

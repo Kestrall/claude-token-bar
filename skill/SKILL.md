@@ -9,9 +9,9 @@ Le rendu est fait par `~/.claude/skills/token-bar/statusline.sh`, branché sur l
 `statusLine` de `~/.claude/settings.json`. Claude Code l'exécute à chaque rafraîchissement
 avec le JSON de session sur stdin. Le skill ne sert qu'à l'installer, le régler ou le retirer.
 
-Affichage : `ctx ████████░░░░ 64% 128k/200k (reste 72k) │ 5h ███░░░ 42% ↻2h13 │ 7j …`
-- `ctx` : tokens dans la fenêtre de contexte actuelle (input + cache), et ce qui reste avant compaction.
-- `5h` / `7j` : quota d'abonnement utilisé et temps avant reset (affiché seulement si Claude Code transmet `rate_limits`).
+Affichage : `Contexte ████████░░ 64% 128k/200k · 72k libres │ Session 5h ███░░ 42% · reset 2h13 │ Semaine …`
+- `Contexte` : tokens dans la fenêtre de contexte actuelle (input + cache), et ce qui reste avant compaction.
+- `Session 5h` / `Semaine` : quota d'abonnement utilisé et temps avant reset (affiché seulement si Claude Code transmet `rate_limits`).
 - Vert < 60 %, jaune < 80 %, orange < 95 %, rouge à partir de 95 %.
 
 ## Activer
@@ -27,7 +27,7 @@ f=~/.claude/settings.json; tmp=$(mktemp); jq 'del(.statusLine)' "$f" > "$tmp" &&
 ```
 
 ## Régler
-- Largeur des barres : préfixer la commande par `TOKEN_BAR_WIDTH=30 `.
+- Largeur des barres : préfixer la commande par `TOKEN_BAR_WIDTH=25 ` (15 par défaut).
 - Seuils / couleurs / libellés : fonction `bar()` du script.
 
 ## Dépanner

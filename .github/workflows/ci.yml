@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  shellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: shellcheck install.sh uninstall.sh skill/statusline.sh tests/run.sh
+
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: tests/run.sh
+      - name: Install / uninstall dans un dossier jetable
+        run: |
+          export CLAUDE_CONFIG_DIR="$RUNNER_TEMP/claude"
+          mkdir -p "$CLAUDE_CONFIG_DIR" && echo '{"theme":"dark"}' > "$CLAUDE_CONFIG_DIR/settings.json"
+          ./install.sh
+          jq -e '.statusLine.command | endswith("token-bar/statusline.sh")' "$CLAUDE_CONFIG_DIR/settings.json"
+          ./uninstall.sh
+          jq -e 'has("statusLine") | not' "$CLAUDE_CONFIG_DIR/settings.json"
