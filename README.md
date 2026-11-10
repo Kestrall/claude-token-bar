@@ -4,7 +4,6 @@
 
 **Ta conso de tokens Claude Code en un coup d'œil, juste sous le prompt.**
 
-[![CI](https://github.com/Kestrall/claude-token-bar/actions/workflows/ci.yml/badge.svg)](https://github.com/Kestrall/claude-token-bar/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/Kestrall/claude-token-bar?color=ff8a1f)](https://github.com/Kestrall/claude-token-bar/releases)
 [![License: MIT](https://img.shields.io/badge/licence-MIT-3fb950)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude_Code-status_line-D97757?logo=claude&logoColor=white)](https://docs.claude.com/en/docs/claude-code/statusline)
@@ -103,7 +102,7 @@ tests/run.sh            # tests du rendu sur des sessions d'exemple (tests/fixtu
 python3 docs/render.py  # régénère les visuels du README depuis la vraie sortie du script
 ```
 
-La CI lance ShellCheck et les tests sur Linux et macOS à chaque push.
+Le workflow [`ci.yml`](.github/workflows/ci.yml) lance ShellCheck, les tests et un cycle install / désinstall sur Linux et macOS.
 
 ## Licence
 
