@@ -11,9 +11,10 @@ bar() { # $1 = pourcentage utilisé (0-100), $2 = libellé, $3 = suffixe
   (( pct > 100 )) && pct=100; (( pct < 0 )) && pct=0
   local filled=$(( pct * WIDTH / 100 )) empty color
   empty=$(( WIDTH - filled ))
-  if   (( pct >= 85 )); then color='\033[31m'   # rouge
-  elif (( pct >= 60 )); then color='\033[33m'   # jaune
-  else                       color='\033[32m'; fi # vert
+  if   (( pct >= 95 )); then color='\033[1;31m'      # rouge vif
+  elif (( pct >= 80 )); then color='\033[38;5;208m'  # orange
+  elif (( pct >= 60 )); then color='\033[33m'        # jaune
+  else                       color='\033[32m'; fi      # vert
   local full rest
   full=$(printf '%*s' "$filled" ''); full=${full// /█}
   rest=$(printf '%*s' "$empty" '');   rest=${rest// /░}

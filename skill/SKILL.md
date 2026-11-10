@@ -12,7 +12,7 @@ avec le JSON de session sur stdin. Le skill ne sert qu'à l'installer, le régle
 Affichage : `ctx ████████░░░░ 64% 128k/200k (reste 72k) │ 5h ███░░░ 42% ↻2h13 │ 7j …`
 - `ctx` : tokens dans la fenêtre de contexte actuelle (input + cache), et ce qui reste avant compaction.
 - `5h` / `7j` : quota d'abonnement utilisé et temps avant reset (affiché seulement si Claude Code transmet `rate_limits`).
-- Vert < 60 %, jaune < 85 %, rouge au-delà.
+- Vert < 60 %, jaune < 80 %, orange < 95 %, rouge à partir de 95 %.
 
 ## Activer
 Avec jq, ajouter dans `~/.claude/settings.json` sans toucher au reste :

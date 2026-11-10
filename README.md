@@ -12,7 +12,7 @@ ctx █░░░░░░░░░░░░░░░░░░░   5% 51k/1.0M (
 | `5h` | Part utilisée de ton quota d'abonnement sur 5 h, et temps avant remise à zéro (↻) |
 | `7j` | Pareil sur 7 jours |
 
-🟢 moins de 60 % · 🟡 jusqu'à 85 % · 🔴 au-delà
+🟢 moins de 60 % · 🟡 de 60 à 80 % · 🟠 de 80 à 95 % · 🔴 95 % et plus
 
 Les barres `5h` et `7j` n'apparaissent que si Claude Code transmet ces infos (abonnement Pro/Max). En usage API, seule `ctx` s'affiche.
 
