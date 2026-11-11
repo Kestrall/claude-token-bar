@@ -4,6 +4,7 @@
 
 **Ta conso de tokens Claude Code en un coup d'œil, juste sous le prompt.**
 
+[![CI](https://github.com/Kestrall/claude-token-bar/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Kestrall/claude-token-bar/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/Kestrall/claude-token-bar?color=ff8a1f)](https://github.com/Kestrall/claude-token-bar/releases)
 [![License: MIT](https://img.shields.io/badge/licence-MIT-3fb950)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude_Code-status_line-D97757?logo=claude&logoColor=white)](https://docs.claude.com/en/docs/claude-code/statusline)
